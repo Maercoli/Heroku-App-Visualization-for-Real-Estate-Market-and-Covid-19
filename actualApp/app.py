@@ -26,7 +26,8 @@ app = Flask(__name__)
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import func
 #app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') or "postgres://xbrqktwe:E_nywn4IJhz89kqxwG3M498kv8qnq4Z6@rajje.db.elephantsql.com:5432/xbrqktwe"
-engine = create_engine('postgres://xbrqktwe:E_nywn4IJhz89kqxwG3M498kv8qnq4Z6@rajje.db.elephantsql.com:5432/xbrqktwe')
+# engine = create_engine('postgres://xbrqktwe:E_nywn4IJhz89kqxwG3M498kv8qnq4Z6@rajje.db.elephantsql.com:5432/xbrqktwe')
+engine=create_engine('postgres://gvrdqgbticobzd:62de2f0015e8651bd5c46847dad2dde40c5d646fe973a52346228fb03564862d@ec2-100-24-139-146.compute-1.amazonaws.com:5432/d3j1lp4tuvm6l1')
 # Remove tracking modifications
 #app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
