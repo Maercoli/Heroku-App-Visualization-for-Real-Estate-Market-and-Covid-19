@@ -121,29 +121,4 @@ function optionChanged(){
             })};
 
 
-  // DETERMINE WHAT HAPPENS WHEN SOMEONE CHOOSES A DIFFERENT USER ID:
   
-//   function optionChanged() {
-       
-//     d3.json(url).then(function(data) {
-
-//         var month_dataset = [];
-//         var quantity_dataset = [];  
-//         var dropdownMenuValue = d3.selectAll("#selDataset").node().value;
-
-//         for (var i = 0; i<data.length;i++){
-
-//             var datapoint = data[i]
-     
-//             if (datapoint.Reporting_PHU_City === `${dropdownMenuValue}`) {
-//                 month_dataset.push(datapoint.month.toString());
-//                 quantity_dataset.push(1);
-//                 }};
-
-//        //Bar chart: We restyle the necessary items:
-
-//         Plotly.restyle("bar","x",[month_dataset])
-//         Plotly.restyle("bar","y",[quantity_dataset])         
-//         console.log(dropdownMenuValue)
-//         console.log(quantity_dataset)        
-//   })};
