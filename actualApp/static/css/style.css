@@ -1,0 +1,165 @@
+/*============= SCATTER PLOT =============*/
+.tooltip {
+    position: absolute;
+    width: 135px;
+    height: 60px;
+    padding: 2px;
+    padding-top: 8px;
+    font: 12px sans-serif;
+    color: white;
+    text-align: center;
+    background: darkblue;
+    border: 0;
+    border-radius: 5px;
+  }
+  
+  .axis-text {
+    font-size: 10px;
+    font-weight: bold;
+    fill: darkblue;
+    text-anchor: middle;
+  }
+  
+  .active {
+    font-weight: bold;
+    fill: #000;
+    fill: darkblue;
+    transition: fill 0.3s ease-out;
+    text-anchor: middle;
+  }
+  
+  .inactive {
+    font-weight: lighter;
+    fill: darkblue;
+    transition: fill 0.3s ease-out;
+    text-anchor: middle;
+  }
+  
+  .inactive:hover {
+    fill: #e75480;
+    cursor: pointer;
+  }
+  
+  .x-axis {
+    font-size: 12px;
+    color: darkblue;
+  }
+  .tick {
+    font-size: 12px;
+    color: darkblue;
+  }
+  
+  #scatter {
+    padding-left: 20px;
+  }
+  #static {
+    padding-left: 80px;
+    padding-top: 50px;
+  }
+ #map{ height: 500px; }
+
+  /*-- Body Reset --*/
+  body {
+    overflow-x: hidden;
+    font-family: 'Montserrat', sans-serif;
+    color: #616971;
+  }
+  
+  
+  /*============= NAVIGATION =============*/
+  .navbar-brand img {
+    height: 3rem;
+  }
+  .navbar {
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    box-shadow: 0 .5rem .5rem rgba(0, 0, 0, .1);
+    z-index: 1;
+  }
+    .nav-item {
+      padding: .5rem;
+    }
+  
+  .nav.link {
+    color: #5b5555!important;
+  }
+  
+  .nav-link.active,
+  .nav-link:hover {
+    color: #4981b3!important;
+  }
+  
+  /*============= TOP/MIDDLE BAR HEADER =============*/
+  .top-bar {
+    background: linear-gradient(to right, #4981b3, #ac2615);
+    height: 1.5rem;
+    padding-bottom: 0;
+  }
+  .middle-bar {
+    background: linear-gradient(to right, #4981b3, #ac2615);
+    min-height: 2!important;
+    padding: 1.5rem 0!important;
+    height: 5rem;
+  }
+  /*============= FOOTER =============*/
+  footer {
+    background-color: #383838;
+    padding: 1rem 2rem 3rem;
+  }
+   
+  footer img {
+    height: 3.5rem;
+    margin: 1.5rem;
+  }
+  footer p, footer a,
+  .socket a {
+    color: white;
+    text-decoration: none;
+  }
+  ul.social {
+    list-style-type: none;
+    display: flex;
+    max-width: 16rem;
+    margin: 0 auto;
+  }
+  ul.social li {
+    margin: 0 auto;
+  }
+  footer .svg-inline--fa {
+    font-size: 2.3rem;
+  }
+  footer .svg-inline--fa:hover {
+    color: #68a0d2;
+  } 
+  
+  /* =========== Plots Adjustments ==========*/
+  
+  #pieChart {
+      width: 45%;
+      vertical-align: text-top;
+      display: inline-block;
+  }
+  #myChart {
+    width: 45%;
+    display: center;
+
+  }
+  /*============= SOCKET =============*/
+  .socket {
+    background-color: #222222;
+    border-top: .1rem solid #4981b3;
+  }
+  
+  
+  /*============= MEDIA QUERIES =============*/
+  
+  /* Devices under 1199px (xl) */
+  @media (max-width: 1199.98px) {
+  
+  }
+  /* Devices under 768px (md) */
+  @media (max-width: 767.98px) {
+  
+  }
+  

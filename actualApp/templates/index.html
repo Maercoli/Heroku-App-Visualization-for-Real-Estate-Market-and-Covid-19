@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Real Estate Vs Covid</title>
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="./static/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./static/css/bootstrap.css">
+	<!-- Style CSS -->
+	<link rel="stylesheet" href="./static/css/style.css">
+	<link rel="stylesheet" href="./static/css/d3Style.css">
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap" rel="stylesheet">
+    <!-- Leaflet CSS -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+	<!-- Leaflet JS -->
+	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+	integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+	crossorigin=""></script>
+	<!-- Plotly -->
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+	<!-- MapBox -->
+	<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.27.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.27.0/mapbox-gl.css' rel='stylesheet' />
+	<!--Charts.js-->
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+
+</head>
+
+<body class="bg-white">
+	<!-- Initiate Navbar -->
+	<nav class="navbar bg-light navbar-light navbar-expand-lg">
+		<div class="container">
+			<h4 class="nav link" href="index.html" class="navbar-brand" style="padding-left:10;">dataPlus</h4>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarResponsive">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item"><a href="" class="nav link">Home</a></li>
+					<li class="nav-item"><a href="/map" class="nav link">Map Report</a></li>
+					<li class="nav-item"><a href="/map" class="nav link">Report</a></li>
+					<li class="nav-item"><a href="" class="nav link">Data</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- End Navigation -->
+
+	<!-- Division Top Bar-->
+	<div class="top-bar">
+		<div class="container">
+			<div class="col-12">
+			</div>
+		</div>
+	</div>
+
+	<!-- End Dision  -->
+
+	<!-- BAR PLOT Section -->
+
+	<div class="container">
+		<div class="row my-4">
+
+            <!-- ADD A FORM HERE-->
+			<div class="col-md-4 text-center">
+				<h5>1. Choose a city in ON to see the progression of Covid-19 from March to early November:</h5>
+				<select id="selDataset" onchange="optionChanged(this.value)"></select>
+				
+			</div>
+    
+            <!-- ADD PLOT HERE-->
+			<div class="col-md-8 ">
+                <div id="bar"></div>
+			</div>
+		</div>
+	</div>
+
+	<!-- End BAR Section -->
+
+	<!-- Division Bar-->
+	<div class="middle-bar">
+		<div class="container">
+			<div class="col-12">
+			</div>
+		</div>
+	</div>
+
+	<!-- End Dision  -->
+
+	<!-- SCATTER HEADER Section -->
+    <!-- ADD HEADERS-->
+	<div class="container">
+		<div class="row">
+			<div class="col-12 text-center mt-4">
+				<p>This is an interact graph, click on "labels" and "dots" to see more.</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- SCATTER Section -->
+	<div class="container my-2">
+		<div class="text-center">
+		<div class="row">
+			<div class="col-md-10">
+				
+				<!-- We append our chart here. -->
+				<div id="scatter" style="float: center;"></div>
+			</div>
+		</div>
+		</div>
+	</div>	
+	<!-- End SCATTER Section -->
+
+	<!-- Division Bar-->
+	<div class="middle-bar">
+		<div class="container">
+			<div class="col-12">
+			</div>
+		</div>
+	</div>
+
+	<!-- End Dision  -->
+
+	<!-- MAP Content -->
+	<div class="container my-2">
+		<div class="row">
+
+            <!-- Add FORM/TEXT  here-->
+			<div class="col-md-3">
+				<p style="font-size: 16px;"><strong>City name and Number of confirmed cases:</strong>  markers are created with a pop-up that displays that city's name and its respective confirmed covid cases in local public health unit
+                </p>	
+			</div>
+
+            <!--Add MAP here-->
+			<div class="col-md-9">
+				<div id="map"></div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- End MAP Content -->
+
+	<!-- Division Bar-->
+	<div class="middle-bar">
+		<div class="container">
+			<div class="col-12">
+			</div>
+		</div>
+	</div>
+
+	<!-- End Dision  -->
+
+	<!-- BAR/LINE Content -->
+	<div class="container-fluid my-2">
+		<div class="row">
+            <!-- Add FORM  here-->
+			<div class="col-12 text-left ">
+				<h7 class="my-4" style="color: black;"><strong>Choose a Year to find out some Real Estate trends:</strong></h7>
+				<select id="selYear">
+					<option value="database1">2019</option>
+					<option value="database2">2020</option>
+				</select>	
+			</div>
+		</div>
+            <!--Add LINE here-->
+	
+	<div class="row">
+		<div class="col-md-6">
+			<div id="plot"> </div>
+		</div>
+		<div class="col-md-6">
+			<div id="plot1"></div>
+		</div>
+	</div>
+	<div class="row py-4">
+		<div class="col-md-7 offset-md-3">
+			<div class="card">
+				<div class="card-body">
+					<h3>Dynamic Chart</h3>
+				</div>
+				<div class="card-body">
+					<canvas id="myChart"></canvas>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<!-- End BAR/LINE Content -->
+	<!-- <div id="map"></div> -->
+	<!-- Start Socket -->
+	<div class="socket text-light text-center pt-1">
+		<p>&copy;<a href="#" target="_blank">www.dataPlus.com</a></p>
+	</div>
+	<!-- End Socket -->
+
+
+	<!-- Import D3-->
+	<script src="https://d3js.org/d3.v5.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+	
+	<!-- Import need Bootstrap links-->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	
+	<!-- Import apps and config-->
+    <script type="text/javascript" src="./static/js/app.js"></script>
+    <script type="text/javascript" src="./static/js/app1.js"></script>
+	<script type="text/javascript" src="./static/js/app2.js"></script>
+	<script type="text/javascript" src="./static/js/app3.js"></script>
+    <script type="text/javascript" src="./static/js/config.js"></script>
+	<script type="text/javascript" src="./static/js/testlogic.js"></script>
+	
+</body>
+</html>
+
