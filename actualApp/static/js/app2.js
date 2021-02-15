@@ -2,12 +2,12 @@ var url_barLine = `/api/v2/bar_line`
 
 //Initial test to ensure that we can run the data:
 
-function retreiveData(sample) {
-    d3.json(url_barLine).then(data=> {
-        console.log(data)
-    });
-};
-retreiveData();
+// function retreiveData(sample) {
+//     d3.json(url_barLine).then(data=> {
+//         console.log(data)     //arrays= [0]BC 2019, [1]BC 2020, [2]empty, [3] BC 2019,2020 
+//     });
+// };
+// retreiveData();
 
 // Initializes the page with a default plot
 function init() {
@@ -89,18 +89,19 @@ function updatePlotly() {
         var dataset = dropdownMenu.node().value;
 
         var CHART = d3.selectAll("#plot").node()
+        var CHART1 = d3.selectAll("#plot1").node()
 
          // Initialize x and y arrays
         var x = [];
         var y = [];
 
         switch(dataset) {
-        case "database2":
+        case "database1":
             x = dates_2019;
             y = units_2019;
             break;
 
-        case "database1":
+        case "database2":
             x = dates_2020;
             y = units_2020;
             break;
@@ -115,6 +116,9 @@ function updatePlotly() {
     Plotly.restyle(CHART, "x", [x]);
     Plotly.restyle(CHART, "y", [y]);
 
+    Plotly.restyle(CHART1, "x", [x]);
+    Plotly.restyle(CHART1, "y", [y]);
+
   });
   
 }
@@ -125,64 +129,34 @@ init()
 
 
 var ctx = document.getElementById('myChart').getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
+
+d3.json(url_barLine).then(data=> {
+
+    var dates_2019 = data[0].map(d => d.Date);
+    var units_2019 = data[0].map(d => d.Units);
+    var dates_2020 = data[1].map(d => d.Date);
+    var units_2020 = data[1].map(d => d.Units);
+
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: dates_2019,  //x-axis
+            datasets: [{
+                label: '# Ontario',
+                data: units_2019,     //y-axis
+                backgroundColor: 'green',
+                borderColor: 'darkgreen',
+                borderWidth: 1,
+                hoverBorderWidth:3,
+                hoverBorderColor:'black',
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
                 }
             }
-        });
-
-// var myChart = new Chart(ctx, {
-//     type: 'bar',
-//     data: data,
-//     options: options
-// });
-
-// console.log(myChart)
-// var mixedChart = new Chart(ctx, {
-//     type: 'bar',
-//     data: {
-//         datasets: [{
-//             label: 'Bar Dataset',
-//             data: [10, 20, 30, 40]
-//         }, {
-//             label: 'Line Dataset',
-//             data: [50, 50, 50, 50],
-
-//             // Changes this dataset to become a line
-//             type: 'line'
-//         }],
-//         labels: ['January', 'February', 'March', 'April']
-//     },
-//     options: options
-// });
+        }
+    });
+})
