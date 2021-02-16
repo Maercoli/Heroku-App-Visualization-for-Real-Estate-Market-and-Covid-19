@@ -87,17 +87,23 @@ def get_bar_line_data():
     bar_list_2020 = []
     bc_list_2019 = []
     bc_list_2020 = []
+    rate_2019 = []
+    rate_2020 = []
 
     with engine.connect() as con:
         query1 = """SELECT "Date", "Units"  FROM "Price_Houses_sold_ON_2019" """
         query2 = """SELECT "Date", "Units"  FROM "Price_Houses_sold_ON_2020" """
         query3 = """SELECT "Date", "Units"  FROM "Units_sold_BC_transf_2019" """
         query4 = """SELECT "Date", "Units"  FROM "Units_sold_BC_transf_2020" """
+        query5 = """SELECT "Date", "Estimated variable mortgage rate"  FROM "Interest_rate_2020" """
+        query6 = """SELECT "Date", "Estimated variable mortgage rate"  FROM "Interest_rate_2019" """
 
         result1 = con.execute(query1)
         result2 = con.execute(query2)
         result3 = con.execute(query3)
         result4 = con.execute(query4)
+        result5 = con.execute(query5)
+        result6 = con.execute(query6)
 
         for row in result1:
             Date = row[0]
@@ -119,7 +125,17 @@ def get_bar_line_data():
             Units = row[1]
             bc_list_2020.append({"Date": Date, "Units":Units})
 
-    return jsonify(bar_list_2019, bar_list_2020, bc_list_2019, bc_list_2020)
+        for row in result5:
+            Date = row[0]
+            Rate = row[1]
+            rate_2020.append({"Date": Date, "Rate": Rate})
+
+        for row in result6:
+            Date = row[0]
+            Rate = row[1]
+            rate_2020.append({"Date": Date, "Rate": Rate})     
+
+    return jsonify(bar_list_2019, bar_list_2020, bc_list_2019, bc_list_2020, rate_2019, rate_2020)
 
 
 
