@@ -71,9 +71,9 @@ def get_covid_tmp():
     
     covid_list_tmp = []
 
-    covid_list_tmp = session.query(covid_dataset.Reporting_PHU_City, covid_dataset.Reporting_PHU_Latitude, covid_dataset.Reporting_PHU_Longitude, func.count(covid_dataset.Row_ID)).\
-                                    group_by(covid_dataset.Reporting_PHU_City, covid_dataset.Reporting_PHU_Latitude,covid_dataset.Reporting_PHU_Longitude).\
-                                    order_by(covid_dataset.Reporting_PHU_City).all()
+    covid_list_tmp = session.query(covid_dataset.Reporting_PHU_City, covid_dataset.month, covid_dataset.Reporting_PHU_Latitude, covid_dataset.Reporting_PHU_Longitude, func.count(covid_dataset.Row_ID)).\
+                                    group_by(covid_dataset.Reporting_PHU_City, covid_dataset.month, covid_dataset.Reporting_PHU_Latitude,covid_dataset.Reporting_PHU_Longitude).\
+                                    order_by(covid_dataset.Reporting_PHU_City,covid_dataset.month).all()
 
     return jsonify(covid_list_tmp)
     

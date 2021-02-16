@@ -33,7 +33,7 @@
 <body class="bg-white">
 	<!-- Initiate Navbar -->
 	<nav class="navbar bg-light navbar-light navbar-expand-lg">
-		<div class="container">
+		<div class="container">	
 			<h4 class="nav link" href="index.html" class="navbar-brand" style="padding-left:10;">dataPlus</h4>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarResponsive">
@@ -129,12 +129,13 @@
 
 	<!-- MAP Content -->
 	<div class="container my-2">
+		<h3><center>City name and Number of confirmed cases:</center></h3>
 		<div class="row">
 
             <!-- Add FORM/TEXT  here-->
 			<div class="col-md-3">
-				<p style="font-size: 16px;"><strong>City name and Number of confirmed cases:</strong>  markers are created with a pop-up that displays that city's name and its respective confirmed covid cases in local public health unit
-                </p>	
+				<h5>3. Choose a month to see the progression of Covid-19 from March to early November:</h5>
+				<select id="selMonth" onchange="optionChanged(this.value)"></select>	
 			</div>
 
             <!--Add MAP here-->
