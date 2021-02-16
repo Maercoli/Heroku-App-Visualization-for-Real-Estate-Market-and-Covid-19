@@ -9,7 +9,7 @@
 ### Sample Visualizations
 
 ![Covid by month](actualApp/assets/img/bar_graph.gif)
----
+
 ![Covid by month and City](actualApp/assets/img/map.gif)
 ---
 
