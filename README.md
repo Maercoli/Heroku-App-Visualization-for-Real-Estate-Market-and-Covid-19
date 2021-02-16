@@ -14,6 +14,7 @@ We will continue leveraging the data that we used during the ETL project regardi
  Sample Visualizations
 ![Covid by month](actualApp/assets/img/bar_graph.gif)
 ![Covid by month and City](actualApp/assets/img/map.gif)
+![Estimated Mortgage Rate over Time](actualApp/assets/img/mortgage_rate.gif)
 
 ## Live webpage
 https://firstappbootcamp2021.herokuapp.com/
