@@ -9,6 +9,6 @@ https://firstappbootcamp2021.herokuapp.com/
 
 ![Covid by month](actualApp/assets/img/bar_graph.gif)
 ![Covid by month and City](actualApp/assets/img/map.gif)
-
+--
 ### Copyright
 dataPlus: ©www.dataPlus.com
