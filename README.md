@@ -8,10 +8,10 @@ Group Members:
 -	Monica Lin 
 -	Emilia Lubanska – Oledzka
 
-Proposal
-We will continue leveraging the data that we used during the ETL project regarding the progression of COVID-19 cases and its impact on real state market indicators. Our initial goal is to create sample visualizations:
+Proposal:
+We will continue leveraging the data that we used during the ETL project regarding the progression of COVID-19 cases and its impact on real state market indicators. Our initial goal is to create:
 
-## Sample Visualizations
+ Sample Visualizations
 ![Covid by month](actualApp/assets/img/bar_graph.gif)
 ![Covid by month and City](actualApp/assets/img/map.gif)
 
