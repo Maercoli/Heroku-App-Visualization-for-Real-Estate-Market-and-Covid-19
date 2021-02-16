@@ -27,7 +27,10 @@ function init() {
         // Add initial dataset for #plot ON
         set1 = [{
         x: dates_2019,
-        y: units_2019 }];
+        y: units_2019,
+        line: {
+            color: 'rgb(255, 0, 0)'        
+        } }];
 
         var layout = {
             title:'Ontario: Houses Sold by Month',
@@ -64,7 +67,7 @@ function init() {
         
             var CHART1 = d3.selectAll("#plot1").node();
         
-            Plotly.newPlot(CHART1, set1, layout1);
+            Plotly.newPlot(CHART1, setBc, layout1);
 
     });
 }
