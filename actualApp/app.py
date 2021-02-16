@@ -91,8 +91,8 @@ def get_bar_line_data():
     rate_2020 = []
 
     with engine.connect() as con:
-        query1 = """SELECT "Date", "Units"  FROM "Price_Houses_sold_ON_2019" """
-        query2 = """SELECT "Date", "Units"  FROM "Price_Houses_sold_ON_2020" """
+        query1 = """SELECT "Date", "Units"  FROM "Ontario_2019" """
+        query2 = """SELECT "Date", "Units"  FROM "Ontario 2020" """
         query3 = """SELECT "Date", "Units"  FROM "Units_sold_BC_transf_2019" """
         query4 = """SELECT "Date", "Units"  FROM "Units_sold_BC_transf_2020" """
         query5 = """SELECT "Date", "Estimated variable mortgage rate"  FROM "Interest_rate_2020" """

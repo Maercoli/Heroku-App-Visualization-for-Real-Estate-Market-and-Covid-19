@@ -2,16 +2,17 @@ var url_barLine = `/api/v2/bar_line`
 
 //Initial test to ensure that we can run the data:
 
-// function retreiveData(sample) {
-//     d3.json(url_barLine).then(data=> {
-//         //console.log(data)     //arrays= [0]BC 2019, [1]BC 2020, [2]empty, [3] BC 2019,2020 
-//         var rates_2020 = data[5].slice(0,11).map(d => d.Rate)
-//         var rates_2019 = data[5].slice(11,22).map(d => d.Rate) //
-//         console.log(rates_2020)
-//         console.log(rates_2019)
-//     });
-// };
-// retreiveData();
+function retreiveData(sample) {
+    d3.json(url_barLine).then(data=> {
+        //console.log(data)     //arrays= [0]BC 2019, [1]BC 2020, [2]empty, [3] BC 2019,2020 
+        var rates_2020 = data[5].slice(0,11).map(d => d.Rate)
+        var rates_2019 = data[5].slice(11,22).map(d => d.Rate) //
+        //console.log(rates_2020)
+        //console.log(rates_2019)
+        console.log(data)
+    });
+};
+retreiveData();
 
 // Initializes the page with a default plot
 function init() {
