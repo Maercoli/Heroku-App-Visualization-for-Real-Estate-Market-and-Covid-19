@@ -2,12 +2,16 @@ var url_barLine = `/api/v2/bar_line`
 
 //Initial test to ensure that we can run the data:
 
-// function retreiveData(sample) {
-//     d3.json(url_barLine).then(data=> {
-//         console.log(data)     //arrays= [0]BC 2019, [1]BC 2020, [2]empty, [3] BC 2019,2020 
-//     });
-// };
-// retreiveData();
+function retreiveData(sample) {
+    d3.json(url_barLine).then(data=> {
+        //console.log(data)     //arrays= [0]BC 2019, [1]BC 2020, [2]empty, [3] BC 2019,2020 
+        var rates_2020 = data[5].slice(0,11).map(d => d.Rate)
+        var rates_2019 = data[5].slice(11,22).map(d => d.Rate) //
+        console.log(rates_2020)
+        console.log(rates_2019)
+    });
+};
+retreiveData();
 
 // Initializes the page with a default plot
 function init() {
@@ -39,7 +43,7 @@ function init() {
     
         Plotly.newPlot(CHART, set1, layout);
 
-        // get BC data
+        // get data for the BC initial plot
         var bc_dates_2019 = data[3].slice(0,11).map(d => d.Date)
         var bc_units_2019 = data[3].slice(11,22).map(d => d.Units)
 
@@ -61,7 +65,7 @@ function init() {
             var CHART1 = d3.selectAll("#plot1").node();
         
             Plotly.newPlot(CHART1, set1, layout1);
-            
+
     });
 }
 
@@ -126,27 +130,35 @@ function updatePlotly() {
 init()
 
 
-
-
+// get data for the #myChart plot
 var ctx = document.getElementById('myChart').getContext('2d');
 
 d3.json(url_barLine).then(data=> {
 
-    var dates_2019 = data[0].map(d => d.Date);
-    var units_2019 = data[0].map(d => d.Units);
-    var dates_2020 = data[1].map(d => d.Date);
-    var units_2020 = data[1].map(d => d.Units);
+    // var dates_2019 = data[0].map(d => d.Date);
+    // var units_2019 = data[0].map(d => d.Units);
+    // var bc_units_2019 = data[3].slice(11,22).map(d => d.Units);
+    var rates_2019 = data[5].slice(11,22).map(d => d.Rate); 
+    var rates_2020 = data[5].slice(0,11).map(d => d.Rate); 
 
     var myChart = new Chart(ctx, {
-        type: 'bar',
+        type: 'line',
         data: {
-            labels: dates_2019,  //x-axis
+            labels: ["January", "February", "March", "April", "May", "August", "September", "October", "November"],  //x-axis
             datasets: [{
-                label: '# Ontario',
-                data: units_2019,     //y-axis
-                backgroundColor: 'green',
-                borderColor: 'darkgreen',
-                borderWidth: 1,
+                label: '# 2020 Rates',
+                data: rates_2020,     //y-axis
+                //backgroundColor: 'red',
+                borderColor: 'red',
+                borderWidth: 3,
+                hoverBorderWidth:3,
+                hoverBorderColor:'black',
+            }, {
+                label: '# 2019 Rates',
+                data: rates_2019,     //y-axis
+                //backgroundColor: 'blue',
+                borderColor: 'darkblue',
+                borderWidth: 3,
                 hoverBorderWidth:3,
                 hoverBorderColor:'black',
             }]
@@ -155,7 +167,7 @@ d3.json(url_barLine).then(data=> {
             scales: {
                 y: {
                     beginAtZero: true
-                }
+                },
             }
         }
     });

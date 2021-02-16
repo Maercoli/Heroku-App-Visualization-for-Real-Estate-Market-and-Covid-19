@@ -117,15 +117,7 @@
     color: white;
     text-decoration: none;
   }
-  ul.social {
-    list-style-type: none;
-    display: flex;
-    max-width: 16rem;
-    margin: 0 auto;
-  }
-  ul.social li {
-    margin: 0 auto;
-  }
+  
   footer .svg-inline--fa {
     font-size: 2.3rem;
   }
@@ -134,17 +126,10 @@
   } 
   
   /* =========== Plots Adjustments ==========*/
+text .xtitle {
+    fill: #ac2615;
+  }
   
-  #pieChart {
-      width: 45%;
-      vertical-align: text-top;
-      display: inline-block;
-  }
-  #myChart {
-    width: 45%;
-    display: center;
-
-  }
   /*============= SOCKET =============*/
   .socket {
     background-color: #222222;
