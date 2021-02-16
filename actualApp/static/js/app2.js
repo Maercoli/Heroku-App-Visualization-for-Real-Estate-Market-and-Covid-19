@@ -33,7 +33,7 @@ function init() {
         } }];
 
         var layout = {
-            title:'Ontario: Houses Sold by Month',
+            title:'Ontario: <br> Houses Sold by Month',
             xaxis: {
               title: 'Month/Year'
             },
@@ -56,7 +56,7 @@ function init() {
             y: bc_units_2019 }];
     
             var layout1 = {
-                title:'British Columbia: Houses Sold by Month',
+                title:'British Columbia:<br> Houses Sold by Month',
                 xaxis: {
                   title: 'Month/Year'
                 },
@@ -171,7 +171,7 @@ d3.json(url_barLine).then(data=> {
                         // Include a dollar sign in the ticks
                         callback: function(value, index, values) {
                             return value + '%';
-                        }
+                        }, 
                     }
                 }]
             },
