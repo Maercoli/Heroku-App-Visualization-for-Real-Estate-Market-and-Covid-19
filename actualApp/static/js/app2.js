@@ -4,11 +4,6 @@ var url_barLine = `/api/v2/bar_line`
 
 function retreiveData(sample) {
     d3.json(url_barLine).then(data=> {
-        //console.log(data)     //arrays= [0]BC 2019, [1]BC 2020, [2]empty, [3] BC 2019,2020 
-        var rates_2020 = data[5].slice(0,11).map(d => d.Rate)
-        var rates_2019 = data[5].slice(11,22).map(d => d.Rate) //
-        //console.log(rates_2020)
-        //console.log(rates_2019)
         console.log(data)
     });
 };
@@ -26,7 +21,7 @@ function init() {
         // console.log(units_2019);
 
         // Add initial dataset for #plot ON
-        set1 = [{
+        setOn = [{
         x: dates_2019,
         y: units_2019,
         line: {
@@ -34,7 +29,7 @@ function init() {
         } }];
 
         var layout = {
-            title:'Ontario: <br> Houses Sold by Month',
+            title:'Ontario: Houses Sold by Month',
             xaxis: {
               title: 'Month/Year'
             },
@@ -45,11 +40,11 @@ function init() {
     
         var CHART = d3.selectAll("#plot").node();
     
-        Plotly.newPlot(CHART, set1, layout);
+        Plotly.newPlot(CHART, setOn, layout);
 
         // get data for the BC initial plot
         var bc_dates_2019 = data[3].slice(0,11).map(d => d.Date)
-        var bc_units_2019 = data[3].slice(11,22).map(d => d.Units)
+        var bc_units_2019 = data[3].slice(0,11).map(d => d.Units)
 
         // Add initial dataset for #plot ON
         setBc = [{
@@ -57,7 +52,7 @@ function init() {
             y: bc_units_2019 }];
     
             var layout1 = {
-                title:'British Columbia:<br> Houses Sold by Month',
+                title:'British Columbia: Houses Sold by Month',
                 xaxis: {
                   title: 'Month/Year'
                 },
@@ -96,8 +91,7 @@ function updatePlotly() {
         var dataset = dropdownMenu.node().value;
 
         var CHART = d3.selectAll("#plot").node()
-        var CHART1 = d3.selectAll("#plot1").node()
-
+        
          // Initialize x and y arrays
         var x = [];
         var y = [];
@@ -122,6 +116,45 @@ function updatePlotly() {
     // Note the extra brackets around 'x' and 'y'
     Plotly.restyle(CHART, "x", [x]);
     Plotly.restyle(CHART, "y", [y]);
+
+
+    // get data for the BC initial plot
+    var bc_dates_2019 = data[3].slice(0,11).map(d => d.Date)
+    var bc_units_2019 = data[3].slice(0,11).map(d => d.Units)
+    var bc_dates_2020 = data[3].slice(11,22).map(d => d.Date)
+    var bc_units_2020 = data[3].slice(11,22).map(d => d.Units)
+    // console.log(bc_dates);
+    // console.log(bc_units_2019);
+    // console.log(bc_units_2020);
+
+    // Use D3 to select the dropdown menu
+    var dropdownMenu = d3.select("#selYear");
+    // Assign the value of the dropdown menu option to a variable
+    var dataset = dropdownMenu.node().value;
+
+    var CHART1 = d3.selectAll("#plot1").node()
+
+    // Initialize x and y arrays
+    var x = [];
+    var y = [];
+
+    switch(dataset) {
+    case "database1":
+        x = bc_dates_2019;
+        y = bc_units_2019;
+        break;
+
+    case "database2":
+        x = bc_dates_2020;
+        y = bc_units_2020;
+        break;
+
+    default:
+        x = bc_dates_2019;
+        y = bc_units_2019;
+        break;
+    }
+
     Plotly.restyle(CHART1, "x", [x]);
     Plotly.restyle(CHART1, "y", [y]);
 
