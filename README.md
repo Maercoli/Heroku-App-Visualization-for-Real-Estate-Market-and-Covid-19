@@ -15,7 +15,7 @@ We will continue leveraging the data that we used during the ETL project regardi
 ---
 ![2. Real Estate Market responce vs Covid cases](actualApp/assets/img/scatter.gif)
 ![3. Covid by month and City](actualApp/assets/img/map.gif)
-![4. Houses sold by month](actualApp/assets/img/line.gif)
+![4. Houses sold by month](actualApp/assets/img/line1.gif)
 ![5. Estimated Mortgage Rate over Time](actualApp/assets/img/mortgage_rate.gif)
 
 ## Live webpage
