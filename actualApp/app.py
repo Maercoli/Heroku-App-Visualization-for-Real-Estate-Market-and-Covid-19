@@ -137,24 +137,36 @@ def get_bar_line_data():
 
     return jsonify(bar_list_2019, bar_list_2020, bc_list_2019, bc_list_2020, rate_2019, rate_2020)
 
-
-
 @app.route("/api/v2/scatter")
-
 def get_scatter():
 
     Scatter_list = []
 
     with engine.connect() as con:
-        query = """SELECT "Date","Average", "Units"  FROM "Price_Houses_sold_ON_2020" """
+        query = """
+        SELECT "Average" 
+        , "Units"
+, CAST("Estimated variable mortgage rate" AS FLOAT) AS "Estimated variable mortgage rate"
+, CAST("Number_of_Cases" AS FLOAT) AS "Number_of_Cases"    
+FROM "Price_Houses_sold_ON_2020" 
+INNER JOIN "Interest_rate_2020" 
+ON "Price_Houses_sold_ON_2020"."Date" = "Interest_rate_2020"."Date" 
+INNER JOIN "CovidCases_On" 
+ON "Price_Houses_sold_ON_2020"."Date" = "CovidCases_On"."Date"
+"""
         result = con.execute(query)
         for row in result:
-                Date = row[0]
-                Average = row[1]
-                Units = row[2]
-                Scatter_list.append({"Date": Date, "Average":Average, "Units":Units})
+                
+                Average = row[0]
+                Units = row[1]
+                Interest_rate = row[2]
+                Number_of_Cases = row[3]
+                
+                Scatter_list.append({"Average":Average, "Units":Units, "Interest_rate":Interest_rate, "Number_of_Cases":Number_of_Cases})
     return jsonify(Scatter_list)
 
-session.close()
+
 if __name__ == "__main__":
     app.run()
+
+
