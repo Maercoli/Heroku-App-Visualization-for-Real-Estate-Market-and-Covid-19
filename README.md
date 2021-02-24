@@ -11,10 +11,10 @@ Group Members:
 Proposal:
 
 Our group wants to analyze two issues: 
-1. Progression of Covid-19 in Ontario.
-2. Impact of Covid-19 on real estate indicators.
+1. Progression of Covid-19 in Ontario
+2. Impact of Covid-19 on real estate indicators
 
-We have maintained this topic for project 3, leveraging javascript, d3, leaflet and chart.js to create our app and visualizations: https://firstappbootcamp2021.herokuapp.com/Visualizations:
+## Visualizations:
 ---
 ![1. Covid by month](actualApp/assets/img/bar_graph.gif)
 ---
