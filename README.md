@@ -45,15 +45,19 @@ We created a connection to Elephant SQL add-on on Heroku through my flask app (a
 We created four routes for our API layer. Except, the url of each route relies on information that the user passes.
 
 For the first route (`/api/v2/covid`), the user picks a `city` by selecting it in the drowpdown menu. That route will then run a query to the Elephant SQL database to get Month and Number of Codiv cases for that specific location.
+---
 ![1. Covid by month](actualApp/assets/img/bar_graph.gif)
 
 The second API route (`/api/v2/scatter`) has the source data for the scatter plot. Each time an user picks a distint x-axis category, the route will run a query to the database. The data returned was used to generate a D3 scatterplot that plotted Number of Covid Cases on the y axis and had a clickable y axis where the user could decide whether they wanted to see Average House Price, Number of Houses Sold, Interest Rate.
+---
 ![2. Real Estate Market responce vs Covid cases](actualApp/assets/img/scatter.gif)
 
 The third API route (`/api/v2/covidTmp`), the user picks a `month` in the dropdown menu and it triggers the route to display in a map the cities that had confirmed cases of Covid. User can zoom in and out in the map and by clicking in a specific city the tooltips display the number of cases for that city. 
+---
 ![3. Covid by month and City](actualApp/assets/img/map.gif)
 
-The fourth API route (`/api/v2/bar_line`) has the source data for three line graphs. The user interacts with the two first graphs by selecting a year in the dropdown menu then, the route will run a query to the database that will swicth datasets for both graphs simuntaniously. The third graph interaction is done by picking one of the years in the legend, this will trigger the route to return the data for that specif year only. Differently from previous charts, we used D3 and Chat.js library to create this last line graph.
+The fourth API route (`/api/v2/bar_line`) has the source data for three line graphs. The user interacts with the two first graphs by selecting a year in the dropdown menu then, the route will run a query to the database that will switch datasets for both graphs simuntaniously. The third graph interaction is done by choosing one of the years in the legend, this will trigger the route to return the data for that specif year only. Unlike the previous charts, we used D3 and Chat.js library to create this last line graph.
+---
 ![4. Houses sold by month](actualApp/assets/img/line1.gif)
 ![5. Estimated Mortgage Rate over Time](actualApp/assets/img/mortgage_rate.gif)
 
@@ -65,9 +69,8 @@ Because of the COVID-19 dataset, which had over 78000 rows, we had issues to dep
 
 Lesson learned and, even though our final app need to be based on a sample dataset, it still provides to users a informative and simple to understand data visualization, they can interpret the impacts of COVID-19 in the real estate market.  
 
---
+---
 Feel free to reach out to us if you have any questions.
 
-
-### Copyright
+## Copyright
 dataPlus: ©www.dataPlus.com
