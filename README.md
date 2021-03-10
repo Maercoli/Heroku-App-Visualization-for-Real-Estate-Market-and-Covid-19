@@ -1,4 +1,4 @@
-# Heroku App - Bootcamp Project 
+# Heroku App - Visualization for Real Estate Market and Covid-19
 
 Group Members:
 -	Marina Ercoli 
