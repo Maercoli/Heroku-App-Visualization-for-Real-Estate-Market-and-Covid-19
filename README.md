@@ -1,15 +1,8 @@
 # Heroku App - Visualization for Real Estate Market and Covid-19
 
-Group Members:
--	Marina Ercoli 
--	Jorge Arriola Villafuerte
--	Ulisses Pinto 
--	Monica Lin 
--	Emilia Lubanska – Oledzka
-
 ## Background: GTA Real Estate Market vs Covid
 
-The goal of this project was to create an app and deploy it using Flask and Heroku! 
+The goal of this project was to create an application and deploy it using Flask and Heroku! 
 
 Taking advantage of the data sets that we had transformed and loaded in a previous project, this time we wanted to create a data visualization to allow users to see:
 
@@ -71,6 +64,13 @@ Lesson learned and, even though our final app need to be based on a sample datas
 
 ---
 Feel free to reach out to us if you have any questions.
+
+Group Members:
+-	Marina Ercoli 
+-	Jorge Arriola Villafuerte
+-	Ulisses Pinto 
+-	Monica Lin 
+-	Emilia Lubanska – Oledzka
 
 ## Copyright
 dataPlus: ©www.dataPlus.com
